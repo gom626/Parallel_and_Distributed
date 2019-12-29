@@ -1,0 +1,22 @@
+image_paralle.c,parallel_grayScale.c,parallel_mirror.c,parallel_smooth.c
+는
+각각 
+mpicc image_parallel.c -o image_parallel
+mpirun -np 24 -hostfile host image_parallel ./ppm_example/Iggy.1024.ppm
+
+mpicc parallel_grayScale.c -o parallel_grayScale
+mpirun -np 24 -hostfile host parallel_grayScale ./ppm_example/Iggy.1024.ppm
+
+mpicc parallel_mirror.c -o parallel_mirror
+mpirun -np 24 -hostfile host parallel_mirror ./ppm_example/Iggy.1024.ppm
+
+mpicc parallel_smooth.c -o parallel_smooth
+mpirun -np 24 -hostfile host parallel_smooth ./ppm_example/Iggy.1024.ppm
+
+반면에 
+image_sequential.c는
+
+gcc image_sequential.c -o image_sequential
+./image_sequential ./ppm_example/Iggy.1024.ppm
+
+
